@@ -4,5 +4,4 @@
 from math import pi
 d = input('Задайте точность числа, например 0.001 : ')
 k = len(d) - 2
-print(k)
-print(round(pi, k))
+print(f'Число pi с заданной точностью {d} составляет {round(pi, k)}')
