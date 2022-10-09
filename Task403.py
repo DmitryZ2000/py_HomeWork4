@@ -32,3 +32,4 @@ for i in range(1,len(new_sorted_list)):
         res_list.append(new_sorted_list[i])
 
 print('Неповторяющихся элементы исходного списка: ', res_list)
+
