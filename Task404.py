@@ -6,7 +6,13 @@
 # import random
 from random import randint
 
-k = 0
+def end_equation(list_koef, equation):
+        if list_koef[-2] != '0':
+            equation += list_koef[-2]+'*'+'X' + ' + ' + list_koef[-1]
+        else: equation += list_koef[-1]
+        return equation
+
+k = 5
 list_koef = []
 for i in range(k+1):
     list_koef.append(str(randint(0,100)))
@@ -19,25 +25,20 @@ for i in range(k+1):
 # list_koef = ['3' , '0' , '45']
 # list_koef = ['3' , '45']
 # list_koef = ['0' , '45']
-list_koef = ['45']
-list_koef = ['0']
+# list_koef = ['25']
+# list_koef = ['0']
+
 # print(list_koef)
 
-# def end_equation(ist_koef):
-
-
 equation = 'Y = '
+
 if k >= 2:
     for i in range(len(list_koef)-2):
         if list_koef[i] != '0': # Проверка на нулевой множитель
             equation += list_koef[i] +'*'+'X'+'^'+ str(len(list_koef)-1-i) + ' + '
-    if list_koef[-2] != '0':
-        equation += list_koef[-2]+'*'+'X' + ' + ' + list_koef[-1]
-    else: equation += list_koef[-1]
+    equation = end_equation(list_koef, equation)
 elif k == 1: #Можно записать elif k:
-    if list_koef[-2] != '0':
-        equation += list_koef[-2]+'*'+'X' + ' + ' + list_koef[-1]
-    else: equation += list_koef[-1]    
+    equation = end_equation(list_koef, equation)
 else: equation += list_koef[-1]
 
 print(equation)
