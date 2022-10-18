@@ -1,11 +1,12 @@
 # Даны два файла, в каждом из которых находится запись многочлена.
 # Задача - сформировать файл, содержащий сумму многочленов.
 
-data1 = '50*X^5 + 40*X^4 + 30*X^3 + 20*X^2 + 10*X + 1000'
+# data1 = '50*X^5 + 40*X^4 + 30*X^3 + 20*X^2 + 10*X + 1000'
 # data1 = '50*X^5 + 40*X^4 + 30*X^3 + 20*X^2 + 1000'
 # data1 = '50*X^5 + 40*X^4 + 30*X^3 + 10*X + 1000'
-data2 ='500*X^5 + 400*X^4 + 300*X^3 + 200*X^2 + 200*X + 2000'
-# data2 ='500*X^5 + 400*X^4 + 300*X^3 + 200*X + 2000'
+data1 = '40*X^4 + 30*X^3 + 10*X + 1000'
+data2 ='500*X^5 + 400*X^4 + 300*X^3 + 200*X^2 + 100*X + 2000'
+# data2 ='500*X^5 + 400*X^4 + 300*X^3 + 100*X + 2000'
 
 def end_equation(list_koef, equation):
         if list_koef[-2] != '0':
@@ -51,18 +52,17 @@ data_dic2 = split_data(data_list2)
 print('Second Dictionary', data_dic2)
 
 #Далее создание словоря
-dic_res = {}
-for key1 in data_dic1.keys(): #Вывод ключей    
-    for key2 in data_dic2.keys():
-        # print(key2*4)        
-        if key1 == key2:
-            dic_res[key1] = str(int(data_dic1[key1]) + int(data_dic2[key2]))
-        elif key1 in data_dic1.keys() and (not key1 in data_dic2.keys()):            
-            dic_res[key1] = str(int(data_dic1[key1]))
-        elif key2 in data_dic2.keys() and (not key2 in data_dic1.keys()):
-            # print(key2)
-            dic_res[key2] = str(int(data_dic2[key2]))
-print('Final Dictionary', dic_res)
+if len(data_dic1) >= len(data_dic2):
+    for key in data_dic1:
+        if key in data_dic1 and key in data_dic2:
+            data_dic1[key] = str(int(data_dic1[key]) + int(data_dic2[key]))
+elif len(data_dic1) < len(data_dic2):
+    for key in data_dic2:
+        if key in data_dic1 and key in data_dic2:
+            data_dic2[key] = str(int(data_dic1[key]) + int(data_dic2[key]))
+
+if len(data_dic1) >= len(data_dic2): dic_res = data_dic1
+else:  dic_res = data_dic2       
 
 k = int(list(dic_res.keys())[0])
 # print(k)
